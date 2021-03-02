@@ -3,7 +3,7 @@ import "../styles/App.css";
 class Timer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { time: 0, x: 0, y: 0,gameHasStarted:true,oncedtimer:0,reachedTodestiny:false };
+    this.state = { time: 0, x: 0, y: 0,gameHasStarted:true,oclick:false,timer:0,reachedTodestiny:false };
 
         this.keyHandling=this.keyHandling.bind(this);
         this.buttonIsClicked=this.buttonIsClicked.bind(this);
@@ -55,13 +55,18 @@ class Timer extends React.Component {
   }
 
    buttonIsClicked(){
- if(this.state.gameHasStarted===true)
- {
+
+        if(this.state.oclick===false)
+        {
+            this.setState({oclick:true})
+       if(this.state.gameHasStarted===true)
+       {
         this.state.timer=setInterval(()=>{
             this.state.time=this.state.time+1
             this.setState({time:this.state.time});
         },1000)
- }
+       }
+    }
         
       }
 
