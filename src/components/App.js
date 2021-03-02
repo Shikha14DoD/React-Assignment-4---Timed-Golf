@@ -30,7 +30,7 @@ class Timer extends React.Component {
             if(e.keyCode===37)
             {
                 let xVal=this.state.x-5;
-                this.setState({x:xVal})
+                this.setState({x:xVal});
             }
 
             if(e.keyCode===40)
