@@ -3,7 +3,7 @@ import "../styles/App.css";
 class Timer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { time: 0, x: 0, y: 0 ,gameHasStarted:true,timer:0,reachedTodestiny:false};
+    this.state = { time: 0, x: 0, y: 0,timer:0,gameHasStarted:true,reachedTodestiny:false};
     
      this.keyHandling=this.keyHandling.bind(this);
         this.buttonIsClicked=this.buttonIsClicked.bind(this);
@@ -18,7 +18,7 @@ class Timer extends React.Component {
             clearInterval(this.state.timer)
             
         }
-     else
+     else if(this.state.time!==0)
      {
           if(e.keyCode===39)
             {
