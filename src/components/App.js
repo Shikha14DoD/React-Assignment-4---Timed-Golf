@@ -3,21 +3,72 @@ import "../styles/App.css";
 class Timer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { time: 0, x: 0, y: 0 };
+    this.state = { time: 0, x: 0, y: 0 ,btnClicked:false,timer:''};
+    
+     this.keyHandling=this.keyHandling.bind(this);
+        this.buttonIsClicked=this.buttonIsClicked.bind(this);
   }
+  
+   keyHandling(e){
+          if(e.keyCode===39)
+            {
+                let xVal=this.state.x+5;
+                this.setState({x:xVal})
+            }
+
+            if(e.keyCode===37)
+            {
+                let xVal=this.state.x-5;
+                this.setState({x:xVal})
+            }
+
+            if(e.keyCode===255)
+            {
+                let yVal=this.state.y+5;
+                this.setState({y:yVal})
+            }
+
+            if(e.keyCode===38)
+            {
+                let yVal=this.state.y-5;
+                this.setState({y:yVal})
+            }
+
+      }
   componentDidMount() {
     
+     window.addEventListener("keydown",this.keyHandling)
   }
 
   componentWillUnmount() {
     
   }
 
+   buttonIsClicked(){
+
+        this.state.timer=setInterval(()=>{
+            this.state.time=this.state.time+1
+            this.setState({time:this.state.time});
+        },1000)
+       
+        
+      }
 
 
   render() {
     return (
  <>
+       <button className="start" onClick={this.buttonIsClicked}>Start</button>
+     <div className="heading-timer">{this.state.time}</div>
+     <div className="ball" style={{left:this.state.x,top:this.state.y}}></div>
+     <div className="hole"></div>
+     {
+        
+        
+       
+        (this.state.x===250 && this.state.y===250)?clearInterval(this.state.timer):null
+          
+     }
 </>
     );
   }
