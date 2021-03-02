@@ -3,23 +3,23 @@ import "../styles/App.css";
 class Timer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { time: 0, x: 0, y: 0,timer:0,gameHasStarted:true,reachedTodestiny:false};
-    
-     this.keyHandling=this.keyHandling.bind(this);
+    this.state = { time: 0, x: 0, y: 0,gameHasStarted:true,oncedtimer:0,reachedTodestiny:false };
+
+        this.keyHandling=this.keyHandling.bind(this);
         this.buttonIsClicked=this.buttonIsClicked.bind(this);
   }
   
    keyHandling(e){
      
-        
-         if(this.state.x===250 && this.state.y===250)
+        if(this.state.x===250 && this.state.y===250)
         {
-           this.setState({gameHasStarted:false})
+            this.setState({gameHasStarted:false})
             clearInterval(this.state.timer)
             
+            
         }
-     else if(this.state.time!==0)
-     {
+        else if(this.state.time!==0)
+        {
           if(e.keyCode===39)
             {
                 let xVal=this.state.x+5;
@@ -43,7 +43,7 @@ class Timer extends React.Component {
                 let yVal=this.state.y-5;
                 this.setState({y:yVal})
             }
-     }
+        }
       }
   componentDidMount() {
     
