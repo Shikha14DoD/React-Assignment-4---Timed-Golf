@@ -3,13 +3,22 @@ import "../styles/App.css";
 class Timer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { time: 0, x: 0, y: 0 ,btnClicked:false,timer:''};
+    this.state = { time: 0, x: 0, y: 0 ,btnClicked:false,timer:0};
     
      this.keyHandling=this.keyHandling.bind(this);
         this.buttonIsClicked=this.buttonIsClicked.bind(this);
   }
   
    keyHandling(e){
+     
+        
+         if(this.state.x===250 && this.state.y===250)
+        {
+            clearInterval(this.state.timer)
+            
+        }
+     else
+     {
           if(e.keyCode===39)
             {
                 let xVal=this.state.x+5;
@@ -33,7 +42,7 @@ class Timer extends React.Component {
                 let yVal=this.state.y-5;
                 this.setState({y:yVal})
             }
-
+     }
       }
   componentDidMount() {
     
@@ -62,13 +71,10 @@ class Timer extends React.Component {
      <div className="heading-timer">{this.state.time}</div>
      <div className="ball" style={{left:this.state.x,top:this.state.y}}></div>
      <div className="hole"></div>
-     {
-        
+     
         
        
-        (this.state.x===250 && this.state.y===250)?clearInterval(this.state.timer):null
-          
-     }
+     
 </>
     );
   }
